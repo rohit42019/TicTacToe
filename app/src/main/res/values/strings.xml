@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">TicTacToe</string>
+    <string name="player_one">Player 1 : X</string>
+    <string name="player_two">Player 2 : O</string>
+    <string name="player_one_turn"></string>
+    <string name="cross">X</string>
+    <string name="zero">O</string>
+    <string name="player_one_wins">Player 1 Wins</string>
+    <string name="player_two_wins">Player 2 Wins</string>
+    <string name="match_draw">Match Draw</string>
+    <string name="Reset">Reset</string>
+</resources>
