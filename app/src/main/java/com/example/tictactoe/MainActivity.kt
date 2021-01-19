@@ -58,14 +58,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 updateText(2,2)
             }
         }
-        count++
-        if(count==9)
+        count++;
+        var win=checkWinner()
+        if(count==9 && win==false)
         {
             displayResult(getString(R.string.match_draw))
-        }
-        else
-        {
-            checkWinner()
         }
         player= if(player==1){2} else{1}
         if(player==1){
@@ -78,8 +75,9 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             playerTwoId.text="Player 2 : O      <---"
         }
     }
-    fun checkWinner()
+    fun checkWinner():Boolean
     {
+        var status=false
         //for rows
         for(i in 0..2)
         {
@@ -87,10 +85,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             {
                 if(array[i][0].text==getString(R.string.cross)){
                     displayResult(getString(R.string.player_one_wins))
+                    status=true
                 }
                 else if(array[i][0].text==getString(R.string.zero))
                 {
                     displayResult(getString(R.string.player_two_wins))
+                    status=true
                 }
             }
         }
@@ -102,10 +102,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 if(array[0][i].text==getString(R.string.cross))
                 {
                     displayResult(getString(R.string.player_one_wins))
+                    status=true
                 }
                 else if(array[0][i].text==getString(R.string.zero))
                 {
                     displayResult(getString(R.string.player_two_wins))
+                    status=true
                 }
             }
         }
@@ -115,10 +117,12 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             if(array[0][0].text==getString(R.string.cross))
             {
                 displayResult(getString(R.string.player_one_wins))
+                status=true
             }
             else if(array[0][0].text==getString(R.string.zero))
             {
                 displayResult(getString(R.string.player_two_wins))
+                status=true
             }
         }
         //right diagonal
@@ -127,12 +131,15 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             if(array[2][0].text==getString(R.string.cross))
             {
                 displayResult(getString(R.string.player_one_wins))
+                status=true
             }
             else if(array[2][0].text==getString(R.string.zero))
             {
                 displayResult(getString(R.string.player_two_wins))
+                status=true
             }
         }
+        return(status)
     }
     fun updateText(row:Int,col:Int)
     {
